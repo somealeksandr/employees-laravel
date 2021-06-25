@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/departments/{slug?}', [DepartmentController::class, 'index']);
+Route::get('/admin/departments/', [DepartmentController::class, 'indexAdmin']);
+
+
+Route::resource('employees', EmployeeController::class);
